@@ -1,0 +1,14 @@
+{
+  "name": "@insite/nav-toolbox",
+  "version": "0.1.0",
+  "description": "Navigation toolbox for @insite projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "d4vm",
+  "license": "MIT",
+  "dependencies": {
+    "@insite/utils": "0.0.1"
+  }
+}
