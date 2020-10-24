@@ -1,91 +1,26 @@
-import utils from "@insite/utils";
 
-class Menu {
+
+export class PanelsMenu {
     /**
      * @constructor
      * @param {HTMLElement} menuDesktop
      * @param {Object} options
      */
     constructor(menuDesktop, options = {}) {
-
-        this.isOpen = false
         this.menuDesktop = menuDesktop
         this.options = Object.assign({}, {
-            panelClass: 'mobile-panel',
-            overlayClass: 'mobile-panel-overlay',
-            buttonClass: 'button--burger',
-            buttonDestination: '.region-header',
-            side: 'left-side',
-            viewportProportion: 100,
+            side: 'left-slide',
         }, options)
-
-        // On créé le conteneur mobile-menu
-        this.mobilePanel = utils.createDivWithClass(this.options.panelClass+' '+this.options.side)
-
-        // A applique le viewportProportion
-        this.mobilePanel.style.width = this.options.viewportProportion+'%'
-
-        // On créé l'overlay
-        this.mobileOverlay = utils.createDivWithClass(this.options.overlayClass);
-
-        // On créé button--menu--main-mobile
-        this.menuMobile = this.menuDesktop.cloneNode(true)
-
-        // On créé button--burger
-        this.createButton(this.options.buttonClass);
-
-        this.mobilePanel.appendChild(this.menuMobile)
-
-        document.querySelector('body').appendChild(this.mobilePanel)
 
         // On split le tout
         this.splitNavToPanels(this);
 
-        document.querySelector('body').appendChild(this.mobileOverlay)
-
-        // On bind le click burger
-        this.bindButtonClick(this);
-
         // On bind les shift buttons
-        this.bindButtonShift();
+        this.bindButtonShift()
 
         // On bind les back buttons
-        this.bindBackButtonShift();
+        this.bindBackButtonShift()
 
-    }
-
-    /**
-     * @method createButton
-     * @param {string} className
-     */
-    createButton(className) {
-        let menuButton = document.createElement('button');
-        let span = document.createElement('span');
-        let divSpans = document.createElement('div');
-        divSpans.innerHTML += span.outerHTML + span.outerHTML + span.outerHTML
-        menuButton.innerHTML +=  divSpans.outerHTML;
-        menuButton.classList.add(className)
-        this.mobileButton = document.querySelector(this.options.buttonDestination).appendChild(menuButton)
-    }
-
-    /**
-     * @method bindButtonShift
-     * @param {Object} that
-     */
-    bindButtonClick(that) {
-        // Bind click mobile
-        this.mobileButton.addEventListener("click", ()=> {
-            that.mobilePanel.classList.toggle('is-open')
-            that.mobileButton.classList.toggle('is-open')
-            document.querySelector('body').classList.toggle('is-blocked')
-            if (that.isOpen === true){
-                utils.fadeOut(that.mobileOverlay)
-                this.closeAllNavPanels();
-            }else {
-                utils.fadeIn(that.mobileOverlay, 'block')
-            }
-            that.isOpen = !that.isOpen;
-        })
     }
 
     /**
@@ -193,7 +128,4 @@ class Menu {
         button.setAttribute('class', 'button--menu-shift')
         return button;
     }
-
 }
-
-export default Menu;

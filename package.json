@@ -1,6 +1,6 @@
 {
   "name": "@insite/nav-toolbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Navigation toolbox for @insite projects",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "d4vm",
   "license": "MIT",
   "dependencies": {
-    "@insite/utils": "0.0.1"
+    "@insite/utils": "0.0.3"
   }
 }

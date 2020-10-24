@@ -1,0 +1,102 @@
+
+.overlay-menu {
+  // 2 - Mais on l'affiche dans le panel
+  nav.navigation.menu--main {
+    display: block;
+  }
+
+  // 3 - Qui lui même sera masqué sur tablet et desktop
+  @include media('>=tablet') {
+    display: none;
+  }
+
+  position: fixed;
+  padding-top: 60px;
+  top: 0;
+  z-index: 25;
+  background-color: #FFF;
+
+  @include transition();
+
+  width: 100%;
+
+  &.right-slide {
+    right: 0;
+    bottom: 0;
+    transform: translate3d(100%, 0, 0);
+    div[class*="panel-nav"],
+    div[class*="panel-nav"] {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  &.left-slide {
+    left: 0;
+    bottom: 0;
+    transform: translate3d(-100%, 0, 0);
+    div[class*="panel-nav"],
+    div[class*="panel-nav"] {
+      @include transform(-100%, 0);
+      &.is-open {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+  }
+
+  &.fade {
+    overflow: hidden;
+    height: 0; opacity: 0;
+    bottom: auto;
+    transition: height 0ms 400ms, opacity 400ms 0ms;
+    &.is-open {
+      height: 100vh;
+      opacity: 1;
+      transition: height 0ms 0ms, opacity 600ms 0ms;
+    }
+  }
+
+  // OUVERT
+  &.is-open {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+.overlay-menu__overlay {
+  position: fixed;
+  z-index: 24;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: hsla(50, 33%, 25%, .65);
+  overflow: hidden; // Hide the element content, while height = 0
+  height: 0; opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+  &.is-visible {
+    height: 100vh;
+    opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+  }
+}
+
+
+.overlay-button {
+  // reset button styles
+  appearance: none;
+  outline: none;
+  background-color: transparent;
+  z-index: 2;
+  position: absolute;
+  height: 100%;
+  padding: 0 .5rem;
+  top: 50%;
+  right: 0;
+  font-size: 1.2rem;
+  border: 1px solid #E7E7E7;
+  text-transform: uppercase;
+  @include transform(0, -50%, 0, 1);
+}
+
+body.is-blocked {
+  overflow: hidden;
+}
+
