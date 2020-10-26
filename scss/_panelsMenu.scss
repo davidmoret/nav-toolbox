@@ -1,6 +1,5 @@
-
-a.back-home,
-a.back-shift {
+a.button--back-home,
+a.button--back-panel {
   display: block;
   background-color: slategrey;
   color: #ffffff;
@@ -11,11 +10,10 @@ a.back-shift {
   }
 }
 
-
 div[class*="panel-nav"],
 div[class*="panel-nav"] {
   position: absolute;
-  top: 0;
+  top: 60px;
   right: 0;
   bottom: 0;
   left: 0;

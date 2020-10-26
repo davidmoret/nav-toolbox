@@ -1,42 +1,43 @@
-
+import { utils } from "@insite/utils";
 
 export class PanelsMenu {
     /**
      * @constructor
-     * @param {HTMLElement} menuDesktop
+     * @param {HTMLElement} navigations
      * @param {Object} options
      */
-    constructor(menuDesktop, options = {}) {
-        this.menuDesktop = menuDesktop
+    constructor(navigations, options = {}) {
+        this.navigations = navigations
         this.options = Object.assign({}, {
             side: 'left-slide',
+            panelsDestination: '.overlay-menu'
         }, options)
 
         // On split le tout
         this.splitNavToPanels(this);
 
         // On bind les shift buttons
-        this.bindButtonShift()
+        this.bindSlideButtons()
 
         // On bind les back buttons
-        this.bindBackButtonShift()
+        this.bindBackButtons()
 
     }
 
     /**
-     * @method cloezAllNavPanels
+     * @method closeAllNavPanels
      */
     closeAllNavPanels() {
-        this.mobilePanel.querySelectorAll('.panel-nav').forEach(function(item){
+        document.querySelectorAll('.panel-nav').forEach(function(item){
             item.classList.remove('is-open');
         })
     }
 
     /**
-     * @method bindButtonShift
+     * @method bindSlideButtons
      */
-    bindButtonShift() {
-        document.querySelectorAll('.button--menu-shift').forEach(function(item){
+    bindSlideButtons() {
+        document.querySelectorAll('.button--slide-panel').forEach(function(item){
             item.addEventListener("click", function(e){
                 let activeLink = e.target.closest("li.menu-item--expanded").classList
                 document.querySelector('div.panel-'+ activeLink[activeLink.length-1]).classList.add('is-open')
@@ -45,11 +46,11 @@ export class PanelsMenu {
     }
 
     /**
-     * @method bindBackButtonShift
+     * @method bindBackButtons
      */
-    bindBackButtonShift() {
+    bindBackButtons() {
         // Bind click mobile
-        document.querySelectorAll('.back-shift').forEach(function(item){
+        document.querySelectorAll('.button--back-panel').forEach(function(item){
             item.addEventListener("click", function(e){
                 e.target.parentNode.classList.toggle('is-open');
             });
@@ -62,7 +63,6 @@ export class PanelsMenu {
      */
     splitNavToPanels(that) {
 
-        let navigations = that.mobilePanel.querySelectorAll(".block-menu")
         let createLinkWithClass = utils.createLinkWithClass
         let createDivWithCLass = utils.createDivWithClass
         let ulsIndexes = 0;
@@ -76,18 +76,18 @@ export class PanelsMenu {
          * @param {string} liClass
          * @param {string} liLabel
          */
-        let ulsLoop = function(uls, navIndex, depth, liClass, liLabel){
+        let ulsLoop = (uls, navIndex, depth, liClass, liLabel) => {
             uls.forEach(function(ul, ulIndex){
                 if(navIndex === 0 && ulsIndexes === 0){
-                    ul.parentNode.insertBefore(createLinkWithClass('back-home', "/", "Retour à l'accueil"), ul)
+                    ul.parentNode.insertBefore(createLinkWithClass('button--back-home', "/", "Retour à l'accueil"), ul)
                 }
                 ul.classList.add(`nav${navIndex}-ul${ulIndex}`)
                 if(liLabel){
-                    let backFirst = createLinkWithClass('back-shift', "#", "Retour à " +liLabel)
+                    let backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
                     let panel = createDivWithCLass('panel-nav panel-depth'+depth + ' panel-'+liClass);
                     panel.appendChild(backFirst)
                     panel.appendChild(ul)
-                    that.mobilePanel.appendChild(panel)
+                    document.querySelector(that.options.panelsDestination).appendChild(panel)
                 }
                 ulsIndexes = ulsIndexes+1;
                 depth = depth+1
@@ -102,11 +102,11 @@ export class PanelsMenu {
          * @param {number} ulIndex
          * @param {number} depth
          */
-        let lisLoop = function(lis, navIndex, ulIndex, depth){
+        let lisLoop = (lis, navIndex, ulIndex, depth) => {
             lis.forEach(function(li, liIndex){
                 li.classList.add(`nav${navIndex}-ul${ulIndex}-li${liIndex}-depth${depth}`)
                 if(li.classList.contains('menu-item--expanded')){
-                    li.appendChild(that.createShiftButtons());
+                    li.appendChild(that.createSlideButtons());
                 }
                 let liClass = `nav${navIndex}-ul${ulIndex}-li${liIndex}-depth${depth}`;
                 let liLabel = li.children[0].innerHTML;
@@ -114,18 +114,18 @@ export class PanelsMenu {
             })
         }
 
-        navigations.forEach(function (navigation, navIndex){
+        this.navigations.forEach(function (navigation, navIndex){
             let firstLevel = navigation.querySelectorAll(":scope > .menu")
             ulsLoop(firstLevel, navIndex, depth)
         })
     }
 
     /**
-     * @method createShiftButtons
+     * @method createSlideButtons
      */
-    createShiftButtons() {
+    createSlideButtons() {
         let button = document.createElement('button')
-        button.setAttribute('class', 'button--menu-shift')
+        button.setAttribute('class', 'button--slide-panel')
         return button;
     }
 }
