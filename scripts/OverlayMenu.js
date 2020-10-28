@@ -18,7 +18,8 @@ export class OverlayMenu {
             buttonClass: 'button--overlay',
             buttonTexts: ['Ouvrir', 'Fermer'],
             buttonDestination: '.region-header',
-            closeButton: false,
+            closeButtonText: false,
+            closeButtonClass: 'button--close',
             transitionType: 'left-slide',
             viewportProportion: 100,
             withPanels : true,
@@ -32,16 +33,26 @@ export class OverlayMenu {
         // A applique le viewportProportion
         this.overlayMenu.style.width = this.options.viewportProportion+'%'
 
+        // On insère le bouton close si besoin
+        if (this.options.closeButtonText !== false){
+            let closeButton = utils.createButton(this.options.closeButtonClass)
+            closeButton.innerHTML = this.options.closeButtonText
+            this.closeButton = this.overlayMenu.append(closeButton)
+        }
 
-        // On créé button--menu--main-mobile
+        // On insère le contenu dans le menu
+        this.overlayMenu.innerHTML += this.content
+
+        // On insère le contenu dans le menu
         this.overlayMenu.innerHTML += this.content
 
         // On créé button--burger
         this.createToggleButton(this.options.buttonClass);
 
-        document.querySelector('body').appendChild(this.overlayMenu)
+        // On insère l'overlayMenu dans le body'
+        document.querySelector(this.options.destination).appendChild(this.overlayMenu)
 
-        // On créé l'overlay si besoin
+        // Si options menu par panels
         if (this.options.withPanels){
             this.navigations = document.querySelectorAll(`.${this.options.class} ${this.options.panelsSelector}`)
             this.panels = new PanelsMenu(this.navigations);
@@ -55,6 +66,11 @@ export class OverlayMenu {
 
         // On bind le click burger
         this.bindButtonClick(this);
+
+        if (this.options.closeButtonText !== false) {
+            debugger
+            this.bindCloseButton(this)
+        }
 
     }
 
@@ -91,6 +107,30 @@ export class OverlayMenu {
                 if (this.options.buttonTexts[0] !== this.options.buttonTexts[1]){
                     this.button.innerHTML = this.options.buttonTexts[1]
                 }
+            }
+            that.button.classList.toggle('is-open');
+            that.overlayMenu.classList.toggle('is-open');
+            (this.options.viewportProportion !== 100) ? that.bgOverlay.classList.toggle('is-visible') : '';
+            that.isOpen = !that.isOpen;
+        })
+    }
+
+
+    /**
+     * @method bindCloseButton
+     * @param {Object} that
+     */
+    bindCloseButton(that) {
+        // Bind click mobile
+        document.querySelector('.'+this.options.closeButtonClass).addEventListener("click", () => {
+            if (this.options.freezeScroll){
+                document.querySelector('body').classList.remove('is-blocked')
+            }
+            if (this.options.buttonTexts[0] !== this.options.buttonTexts[1]){
+                this.button.innerHTML = this.options.buttonTexts[0]
+            }
+            if (this.options.withPanels){
+                this.panels.closeAllNavPanels();
             }
             that.button.classList.toggle('is-open');
             that.overlayMenu.classList.toggle('is-open');
