@@ -43,9 +43,6 @@ export class OverlayMenu {
         // On insère le contenu dans le menu
         this.overlayMenu.innerHTML += this.content
 
-        // On insère le contenu dans le menu
-        this.overlayMenu.innerHTML += this.content
-
         // On créé button--burger
         this.createToggleButton(this.options.buttonClass);
 
