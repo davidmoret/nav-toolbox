@@ -68,7 +68,6 @@ export class OverlayMenu {
         this.bindButtonClick(this);
 
         if (this.options.closeButtonText !== false) {
-            debugger
             this.bindCloseButton(this)
         }
 
