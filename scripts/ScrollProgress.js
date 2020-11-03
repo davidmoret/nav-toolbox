@@ -65,7 +65,6 @@ export class ScrollProgress {
                 this.post.classList.remove('finished')
             }
         }
-        console.log(this.finish)
         return progressPercentage;
     }
 
