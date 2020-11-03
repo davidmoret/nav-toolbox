@@ -1,0 +1,21 @@
+.progress {
+  background-color: #FFF;
+  height: 10px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .progress__inner {
+    height: 100%;
+    width: 0;
+    background-color: #494949;
+    @include transition();
+  }
+  &.full {
+    .progress__inner {
+      width: 100%!important;
+      background-color: #353535;
+    }
+  }
+}
