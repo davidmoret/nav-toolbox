@@ -1,6 +1,6 @@
 import { utils } from "@insite/utils";
 
-export class scrollProgress {
+export class ScrollProgress {
 
     /**
      * @constructor
