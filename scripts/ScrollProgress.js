@@ -14,10 +14,11 @@ export class ScrollProgress {
             topShift: 250,
             bottomShift: 100,
             destination: this.post,
+            finishCallback: null
         }, options);
 
         this.post = post
-        this.inViewport = this.finish = false
+        this.inViewport = this.finish = this.callbackFired = false
 
         this.observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => this.inViewport = entry.isIntersecting)
@@ -59,6 +60,11 @@ export class ScrollProgress {
                 this.finish = true;
                 this.progressBar.classList.add('full')
                 this.post.classList.add('finished')
+
+                if (typeof this.options.finishCallback == 'function' && !this.callbackFired) {
+                    this.options.finishCallback();
+                    this.callbackFired = true;
+                }
             }else {
                 this.finish = false;
                 this.progressBar.classList.remove('full')
