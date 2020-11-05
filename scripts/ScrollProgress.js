@@ -10,7 +10,7 @@ export class ScrollProgress {
     constructor(post, options = {}) {
 
         this.options = Object.assign({}, {
-            class: 'progressBar',
+            class: 'progress',
             topShift: 250,
             bottomShift: 100,
             destination: this.post,
