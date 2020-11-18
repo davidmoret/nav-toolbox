@@ -50,22 +50,23 @@ export class ScrollProgress {
     getScrollProgress (el, that) {
         let progressPercentage = 0;
         if (that.inViewport) {
+
             let coords = el.getBoundingClientRect();
             let coordsTop = coords.top - this.options.topShift;
-            let height = coords.height - this.options.bottomShift;
+
+            // On ajoute à la hauteur de l'element le topShift et on lui retire le bottomShift
+            // pour que le pourcentage soit bien calculé en fonction des deux décalages
+            let height = coords.height + this.options.topShift - this.options.bottomShift;
+
             if(coordsTop < 0){
                 progressPercentage = (Math.abs(coordsTop) / height) * 100;
             }
-            if((progressPercentage > 100) || (Math.abs(coords.top) / height) > 1) {
+
+            if (progressPercentage > 100) {
                 this.finish = true;
                 this.progressBar.classList.add('full')
                 this.post.classList.add('finished')
-
-                if (typeof this.options.finishCallback == 'function' && !this.callbackFired) {
-                    this.options.finishCallback();
-                    this.callbackFired = true;
-                }
-            }else {
+            } else {
                 this.finish = false;
                 this.progressBar.classList.remove('full')
                 this.post.classList.remove('finished')
