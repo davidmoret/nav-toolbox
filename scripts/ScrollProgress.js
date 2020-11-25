@@ -66,6 +66,12 @@ export class ScrollProgress {
                 this.finish = true;
                 this.progressBar.classList.add('full')
                 this.post.classList.add('finished')
+
+                if (typeof this.options.finishCallback == 'function' && !this.callbackFired) {
+                    this.options.finishCallback();
+                    this.callbackFired = true;
+                }
+
             } else {
                 this.finish = false;
                 this.progressBar.classList.remove('full')
