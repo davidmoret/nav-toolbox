@@ -14,8 +14,10 @@ export class OverlayMenu {
         this.options = Object.assign({}, {
             class: 'overlay-menu',
             overlayClass: 'overlay-menu__overlay',
+            overlayClassActive: 'is-open',
             destination: 'body',
             buttonClass: 'button--overlay',
+            buttonClassActive: 'is-open',
             buttonTexts: ['Ouvrir', 'Fermer'],
             buttonDestination: '.region-header',
             closeButtonText: false,
@@ -104,8 +106,8 @@ export class OverlayMenu {
                     this.button.innerHTML = this.options.buttonTexts[1]
                 }
             }
-            that.button.classList.toggle('is-open');
-            that.overlayMenu.classList.toggle('is-open');
+            that.button.classList.toggle(this.options.buttonClassActive);
+            that.overlayMenu.classList.toggle(this.options.overlayClassActive);
             (this.options.viewportProportion !== 100) ? that.bgOverlay.classList.toggle('is-visible') : '';
             that.isOpen = !that.isOpen;
         })
@@ -128,8 +130,8 @@ export class OverlayMenu {
             if (this.options.withPanels){
                 this.panels.closeAllNavPanels();
             }
-            that.button.classList.toggle('is-open');
-            that.overlayMenu.classList.toggle('is-open');
+            that.button.classList.toggle(this.options.buttonClassActive);
+            that.overlayMenu.classList.toggle(this.options.overlayClassActive);
             (this.options.viewportProportion !== 100) ? that.bgOverlay.classList.toggle('is-visible') : '';
             that.isOpen = !that.isOpen;
         })
