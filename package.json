@@ -1,6 +1,6 @@
 {
   "name": "@insite/nav-toolbox",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Various useful about navigation in drupal 8/9 projects",
   "author": "d4vm",
   "license": "ISC",
