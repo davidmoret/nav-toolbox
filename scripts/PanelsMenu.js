@@ -10,6 +10,7 @@ export class PanelsMenu {
         this.navigations = navigations
         this.options = Object.assign({}, {
             side: 'left-slide',
+            title_panel: false,
             panelsDestination: '.overlay-menu'
         }, options)
 
@@ -83,10 +84,17 @@ export class PanelsMenu {
                 }
                 ul.classList.add(`nav${navIndex}-ul${ulIndex}`)
                 if(liLabel){
-                    let backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
                     let panel = createDivWithCLass('panel-nav panel-depth'+depth + ' panel-'+liClass);
-                    panel.appendChild(backFirst)
+                    if(that.options.title_panel){
+                        let panelTitle = createDivWithCLass('panel__title')
+                        panelTitle.innerHTML = liLabel;
+                        let backFirst = createLinkWithClass('button--back-panel', "#", "Retour au menu principal");
+                        panel.appendChild(panelTitle)
+                    }else {
+                        let backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
+                    }
                     panel.appendChild(ul)
+                    panel.appendChild(backFirst)
                     document.querySelector(that.options.panelsDestination).appendChild(panel)
                 }
                 ulsIndexes = ulsIndexes+1;

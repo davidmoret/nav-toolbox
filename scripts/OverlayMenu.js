@@ -25,6 +25,7 @@ export class OverlayMenu {
             transitionType: 'left-slide',
             viewportProportion: 100,
             withPanels : true,
+            title_panel : false,
             panelsSelector: 'nav',
             freezeScroll: true
         }, options)
@@ -54,7 +55,9 @@ export class OverlayMenu {
         // Si options menu par panels
         if (this.options.withPanels){
             this.navigations = document.querySelectorAll(`.${this.options.class} ${this.options.panelsSelector}`)
-            this.panels = new PanelsMenu(this.navigations);
+            this.panels = new PanelsMenu(this.navigations, options = {
+                "title_panel": this.options.title_panel
+            });
         }
 
         // On créé l'overlay si besoin
