@@ -84,14 +84,17 @@ export class PanelsMenu {
                 }
                 ul.classList.add(`nav${navIndex}-ul${ulIndex}`)
                 if(liLabel){
+                    let backFirst;
                     let panel = createDivWithCLass('panel-nav panel-depth'+depth + ' panel-'+liClass);
                     if(that.options.title_panel){
+                        console.log('41')
                         let panelTitle = createDivWithCLass('panel__title')
                         panelTitle.innerHTML = liLabel;
-                        let backFirst = createLinkWithClass('button--back-panel', "#", "Retour au menu principal");
+                        backFirst = createLinkWithClass('button--back-panel', "#", "Retour au menu principal");
                         panel.appendChild(panelTitle)
                     }else {
-                        let backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
+                        console.log('2')
+                        backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
                     }
                     panel.appendChild(ul)
                     panel.appendChild(backFirst)
