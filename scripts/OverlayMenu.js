@@ -81,7 +81,7 @@ export class OverlayMenu {
      */
     createToggleButton(className) {
         let menuButton = document.createElement('button');
-        menuButton.classList.add(className)
+        menuButton.setAttribute('class', className)
         menuButton.innerHTML = this.options.buttonTexts[0]
         this.button = document.querySelector(this.options.buttonDestination).appendChild(menuButton)
     }
