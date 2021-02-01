@@ -10,7 +10,7 @@
     height: 100%;
     width: 0;
     background-color: #494949;
-    @include transition();
+    transition: all .3s ease;
   }
   &.full {
     .progress__inner {
