@@ -15,10 +15,11 @@ export class AnchorMenu {
             dataSelector: 'data-heading'
         }, options);
 
+
         // On créé le html de la nav et on l'injecte dans le container
         this.menu.setAttribute('class', 'anchorMenu');
         this.container.prepend(this.menu);
-        this.buildNav(this.menu, this.container.querySelectorAll(`[${this.options.dataSelector}]`));
+        this.buildNav(this.menu, this.container.querySelectorAll(`[${this.options.dataSelector}]`), this.options.dataSelector);
         new ScrollSpy({
             ratio: this.options.ratio
         });
@@ -30,14 +31,14 @@ export class AnchorMenu {
      * @param {HTMLElement} thatMenu
      * @param {NodeList} allHeadings
      */
-    buildNav(thatMenu, allHeadings) {
+    buildNav(thatMenu, allHeadings, dataSelector) {
 
         /**
          * @param {HTMLElement} item
          * @param {string} anchor
          */
         const setSectionHeight = function(item, el){
-            const distance = utils.getDistanceBetweenElements(item, utils.getNextSibling(item, `[${this.options.dataSelector}]`));
+            const distance = utils.getDistanceBetweenElements(item, utils.getNextSibling(item, `[${dataSelector}]`));
             el.style.height = distance + 'px';
         };
 
@@ -51,7 +52,7 @@ export class AnchorMenu {
             el.classList.add('anchor-section');
             el.setAttribute('id', anchor);
             item.appendChild(el);
-            if (utils.getNextSibling(item, `[${this.options.dataSelector}]`) !== undefined){
+            if (utils.getNextSibling(item, `[${dataSelector}]`) !== undefined){
                 // On reset la hauteur de la section fantôme si resize
                 setSectionHeight(item, el);
                 window.addEventListener('resize', utils.debounce(function(){
@@ -61,7 +62,7 @@ export class AnchorMenu {
         };
 
         allHeadings.forEach(function(item) {
-            let txt = item.getAttribute(this.options.dataSelector);
+            let txt = item.getAttribute(dataSelector);
             let id = txt.replace(/\W/g,'_');
             thatMenu.append(utils.createLinkWithClass('lvl-item' + item.tagName, '#' + id, txt));
             buildSection(item, id);
