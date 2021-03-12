@@ -1,6 +1,6 @@
 {
   "name": "@insite/nav-toolbox",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Various useful about navigation in drupal 8/9 projects",
   "author": "d4vm",
   "license": "ISC",
@@ -9,6 +9,6 @@
   },
   "homepage": "https://github.com/davidmoret/nav-toolbox",
   "dependencies": {
-    "@insite/utils": "0.0.7"
+    "@insite/utils": "0.0.8"
   }
 }
