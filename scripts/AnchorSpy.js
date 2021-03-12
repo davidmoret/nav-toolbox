@@ -1,11 +1,12 @@
 import { utils } from "@insite/utils";
 
-export class ScrollSpy {
+export class AnchorSpy {
 
 
     constructor(options = {}) {
         this.observer = null;
         this.options = Object.assign({}, {
+            ratio: '.7',
             selector: 'div.anchor-section'
         }, options);
         this.spies = document.querySelectorAll(this.options.selector);

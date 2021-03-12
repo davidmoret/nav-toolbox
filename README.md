@@ -1,17 +1,38 @@
 # @insite/nav-toolbox
 
-> Various useful about navigation in drupal 8/9 projects
+> Classes JS relatives à la navigation
 
-## Install
+## Installation
 
-Using npm :
-
-```sh
-npm install --save-dev @insite/nav-toolbox
-```
-
-or using yarn :
+Via npm :
 
 ```sh
-yarn add @insite/nav-toolbox --dev
+npm install --save @insite/nav-toolbox
 ```
+
+ou via yarn :
+
+```sh
+yarn add @insite/nav-toolbox
+```
+
+## Outils
+
+##### AnchorMenu.js
+Construit un sommaire avec des ancres suivant les 'data-heading' présents sur les h1, h2, h3... 
+
+[Documentation](docs/AnchorMenu.md)  .   [Démo](docs/AnchorMenu.md)
+
+#
+
+##### IoAddClass.js
+Construit un sommaire avec des ancres en fonction des 'data-heading' présents sur les h1, h2, h3... 
+> [Documentation](docs/IoAddClass.md)
+
+#
+
+##### OverlayMenu.js
+Construit un sommaire avec des ancres en fonction des 'data-heading' présents sur les h1, h2, h3... 
+> [Documentation](docs/OverlayMenu.md)
+
+#

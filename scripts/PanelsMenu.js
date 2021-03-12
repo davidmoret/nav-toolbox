@@ -10,7 +10,7 @@ export class PanelsMenu {
         this.navigations = navigations
         this.options = Object.assign({}, {
             side: 'left-slide',
-            title_panel: false,
+            titlePanel: false,
             panelsDestination: '.overlay-menu'
         }, options)
 
@@ -86,7 +86,7 @@ export class PanelsMenu {
                 if(liLabel){
                     let backFirst;
                     let panel = createDivWithCLass('panel-nav panel-depth'+depth + ' panel-'+liClass);
-                    if(that.options.title_panel){
+                    if(that.options.titlePanel){
                         let panelTitle = createDivWithCLass('panel__title')
                         panelTitle.innerHTML = liLabel;
                         backFirst = createLinkWithClass('button--back-panel', "#", "Retour au menu principal");

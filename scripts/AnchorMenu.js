@@ -1,5 +1,5 @@
 import { utils } from '@insite/utils';
-import { ScrollSpy } from "./ScrollSpy.js";
+import { AnchorSpy } from "./AnchorSpy.js";
 
 export class AnchorMenu {
     /**
@@ -12,15 +12,16 @@ export class AnchorMenu {
         this.menu = document.createElement('nav');
         this.options = Object.assign({}, {
             ratio: '.7',
-            dataSelector: 'data-heading'
+            dataSelector: 'data-heading',
+            menuClass: 'anchor-menu',
         }, options);
 
 
         // On créé le html de la nav et on l'injecte dans le container
-        this.menu.setAttribute('class', 'anchorMenu');
+        this.menu.setAttribute('class', this.options.menuClass);
         this.container.prepend(this.menu);
         this.buildNav(this.menu, this.container.querySelectorAll(`[${this.options.dataSelector}]`), this.options.dataSelector);
-        new ScrollSpy({
+        new AnchorSpy({
             ratio: this.options.ratio
         });
 
@@ -35,7 +36,7 @@ export class AnchorMenu {
 
         /**
          * @param {HTMLElement} item
-         * @param {string} anchor
+         * @param {HTMLElement} el
          */
         const setSectionHeight = function(item, el){
             const distance = utils.getDistanceBetweenElements(item, utils.getNextSibling(item, `[${dataSelector}]`));
@@ -64,7 +65,7 @@ export class AnchorMenu {
         allHeadings.forEach(function(item) {
             let txt = item.getAttribute(dataSelector);
             let id = txt.replace(/\W/g,'_');
-            thatMenu.append(utils.createLinkWithClass('lvl-item' + item.tagName, '#' + id, txt));
+            thatMenu.append(utils.createLinkWithClass('anchor-type-' + item.tagName, '#' + id, txt));
             buildSection(item, id);
         });
 
