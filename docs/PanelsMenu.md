@@ -1,13 +1,12 @@
-[<-- Retour à @insite/nav-toolbox](../README.md)
+## [@insite](../../README.md)/[nav-toolbox](../README.md)/PanelsMenu.js
 
-# PanelsMenu
+Transforme un menu Drupal en menu à panneaux coulissants à profondeur infinie (optionnel OverlayMenu.js).
 
-@param {HTMLElement} navigations
-
-@param {Object} options 
-- side: 'left-slide'
-- titlePanel: false
-- panelsDestination: '.overlay-menu'
+* *@param {HTMLElement} navigations*
+* *@param {Object} options* 
+    * side: 'left-slide'
+    * titlePanel: false
+    * panelsDestination: '.overlay-menu'
 
 #
 

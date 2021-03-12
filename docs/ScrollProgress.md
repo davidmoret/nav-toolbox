@@ -1,15 +1,13 @@
-[<-- Retour à @insite/nav-toolbox](../README.md)
+## [@insite](../../README.md)/[nav-toolbox](../README.md)/ScrollProgress.js
 
-# ScrollProgress
 
-@param {HTMLElement} post
-
-@param {Object} options 
-- class: 'progress'
-- topShift: 250
-- bottomShift: 100
-- destination: this.post
-- finishCallback: null
+* *@param {HTMLElement} post*
+* *@param {Object} options* 
+    * class: 'progress'
+    * topShift: 250
+    * bottomShift: 100
+    * destination: this.post
+    * finishCallback: null
 
 #
 

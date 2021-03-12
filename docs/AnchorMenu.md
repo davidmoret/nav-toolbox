@@ -1,13 +1,13 @@
-[<-- Retour à @insite/nav-toolbox](../README.md)
+## [@insite](../../README.md)/[nav-toolbox](../README.md)/AnchorMenu.js
 
-# AnchorMenu
+Construit un sommaire avec ancres suivant les 'data-heading' présents sur les h1, h2, h3... 
 
-@param {HTMLElement} container
+* *@param {HTMLElement} container*
 
-@param {Object} options 
-- ratio: '.7'
-- dataSelector: 'data-heading'
-- menuClass: 'anchor-menu'
+* *@param {Object} options*
+    * ratio: '.7'
+    * dataSelector: 'data-heading'
+    * menuClass: 'anchor-menu'
 
 #
 

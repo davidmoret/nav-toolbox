@@ -1,26 +1,26 @@
-[<-- Retour à @insite/nav-toolbox](../README.md)
+## [@insite](../../README.md)/[nav-toolbox](../README.md)/OverlayMenu.js
 
-# OverlayMenu
+Construit un menu en overlay et son bouton d'ouverture (menu burger, popin recherche...)
 
-@param {InnerHTML} content
 
-@param {Object} options 
-- class: 'overlay-menu'
-- overlayClass: 'overlay-menu__overlay'
-- overlayClassActive: 'is-open'
-- destination: 'body'
-- buttonClass: 'button--overlay'
-- buttonClassActive: 'is-open'
-- buttonTexts: ['Ouvrir', 'Fermer']
-- buttonDestination: '.region-header'
-- closeButtonText: false
-- closeButtonClass: 'button--close'
-- transitionType: 'left-slide'
-- viewportProportion: 100
-- withPanels : true
-- title_panel : false
-- panelsSelector: 'nav'
-- freezeScroll: true
+* *@param {InnerHTML} content*
+* *@param {Object} options* 
+    * class: 'overlay-menu'
+    * overlayClass: 'overlay-menu__overlay'
+    * overlayClassActive: 'is-open'
+    * destination: 'body'
+    * buttonClass: 'button--overlay'
+    * buttonClassActive: 'is-open'
+    * buttonTexts: ['Ouvrir', 'Fermer']
+    * buttonDestination: '.region-header'
+    * closeButtonText: false
+    * closeButtonClass: 'button--close'
+    * transitionType: 'left-slide'
+    * viewportProportion: 100
+    * withPanels : true
+    * title_panel : false
+    * panelsSelector: 'nav'
+    * freezeScroll: true
 
 #
 
