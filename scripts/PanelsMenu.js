@@ -64,8 +64,8 @@ export class PanelsMenu {
      */
     splitNavToPanels(that) {
 
-        let createLinkWithClass = utils.createLinkWithClass
-        let createDivWithCLass = utils.createDivWithClass
+        let createLink = utils.createLink
+        let createDiv = utils.createDiv
         let ulsIndexes = 0;
         let depth = 0;
 
@@ -80,19 +80,19 @@ export class PanelsMenu {
         let ulsLoop = (uls, navIndex, depth, liClass, liLabel) => {
             uls.forEach(function(ul, ulIndex){
                 if(navIndex === 0 && ulsIndexes === 0){
-                    ul.parentNode.insertBefore(createLinkWithClass('button--back-home', "/", "Retour à l'accueil"), ul)
+                    ul.parentNode.insertBefore(createLink('button--back-home', "/", "Retour à l'accueil"), ul)
                 }
                 ul.classList.add(`nav${navIndex}-ul${ulIndex}`)
                 if(liLabel){
                     let backFirst;
-                    let panel = createDivWithCLass('panel-nav panel-depth'+depth + ' panel-'+liClass);
+                    let panel = createDiv('panel-nav panel-depth'+depth + ' panel-'+liClass);
                     if(that.options.titlePanel){
-                        let panelTitle = createDivWithCLass('panel__title')
+                        let panelTitle = createDiv('panel__title')
                         panelTitle.innerHTML = liLabel;
-                        backFirst = createLinkWithClass('button--back-panel', "#", "Retour au menu principal");
+                        backFirst = createLink('button--back-panel', "#", "Retour au menu principal");
                         panel.appendChild(panelTitle)
                     }else {
-                        backFirst = createLinkWithClass('button--back-panel', "#", "Retour à " +liLabel)
+                        backFirst = createLink('button--back-panel', "#", "Retour à " +liLabel)
                     }
                     panel.appendChild(ul)
                     panel.appendChild(backFirst)

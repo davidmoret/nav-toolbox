@@ -31,7 +31,7 @@ export class OverlayMenu {
         }, options)
 
         // On créé .menu-overlay
-        this.overlayMenu = utils.createDivWithClass(this.options.class+' '+this.options.transitionType)
+        this.overlayMenu = utils.createDiv(this.options.class+' '+this.options.transitionType)
 
         // A applique le viewportProportion
         this.overlayMenu.style.width = this.options.viewportProportion+'%'
@@ -62,7 +62,7 @@ export class OverlayMenu {
 
         // On créé l'overlay si besoin
         if (this.options.viewportProportion !== 100){
-            this.bgOverlay = utils.createDivWithClass(this.options.overlayClass);
+            this.bgOverlay = utils.createDiv(this.options.overlayClass);
             document.querySelector('body').appendChild(this.bgOverlay)
         }
 

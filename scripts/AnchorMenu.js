@@ -65,7 +65,7 @@ export class AnchorMenu {
         allHeadings.forEach(function(item) {
             let txt = item.getAttribute(dataSelector);
             let id = txt.replace(/\W/g,'_');
-            thatMenu.append(utils.createLinkWithClass('anchor-type-' + item.tagName, '#' + id, txt));
+            thatMenu.append(utils.createLink('anchor-type-' + item.tagName, '#' + id, txt));
             buildSection(item, id);
         });
 

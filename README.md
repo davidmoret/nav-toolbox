@@ -1,4 +1,5 @@
-# [@insite](docs/AnchorMenu.md)/nav-toolbox 
+# [@insite](../README.md)/nav-toolbox 
+
 Classes JS utiles et relatives à la navigation
 
 ***
@@ -48,7 +49,7 @@ Construit un menu en overlay et son bouton d'ouverture (menu burger, popin reche
 ##### PanelsMenu.js
 Transforme un menu Drupal en menu à panneaux coulissants à profondeur infinie (optionnel OverlayMenu.js).
 
-[Documentation](docs/OverlayMenu.md) .   [Démo (menu mobile)](preprod.insite-labo-ess.d9.insite.coop/)
+[Documentation](docs/PanelsMenu.md) .   [Démo (menu mobile)](preprod.insite-labo-ess.d9.insite.coop/)
 
 
 #
@@ -56,7 +57,7 @@ Transforme un menu Drupal en menu à panneaux coulissants à profondeur infinie 
 ##### ScrollProgress.js
 Indique la progression de lecture d'un article
 
-[Documentation](docs/OverlayMenu.md)  .  [Démo](https://www.alternatives-economiques.fr/crise-rime-galere-autoentrepreneurs/00098369)
+[Documentation](docs/ScrollProgress.md)  .  [Démo](https://www.alternatives-economiques.fr/crise-rime-galere-autoentrepreneurs/00098369)
 
 
 #

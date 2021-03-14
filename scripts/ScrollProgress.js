@@ -26,8 +26,8 @@ export class ScrollProgress {
 
         this.observer.observe(post);
 
-        this.progressBar = utils.createDivWithClass(this.options.class)
-        this.progressBarInner = utils.createDivWithClass(this.options.class+'__inner')
+        this.progressBar = utils.createDiv(this.options.class)
+        this.progressBarInner = utils.createDiv(this.options.class+'__inner')
         this.progressBar.append(this.progressBarInner)
         if (this.options.destination !== this.post){
             document.querySelector(this.options.destination).append(this.progressBar)
